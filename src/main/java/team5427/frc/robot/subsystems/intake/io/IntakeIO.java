@@ -22,14 +22,16 @@ import org.littletonrobotics.junction.AutoLog;
 public interface IntakeIO {
   @AutoLog
   public static class IntakeIOInputs {
-    public Rotation2d pivotMotorRotation = Rotation2d.kZero;
     public AngularVelocity pivotMotorAngularVelocity = RotationsPerSecond.of(0.0);
     public AngularAcceleration pivotMotorAngularAcceleration = RotationsPerSecondPerSecond.of(0.0);
+    public Rotation2d pivotMotorPosition = Rotation2d.kZero;
 
     public LinearVelocity rollerMotorLinearVelocity = MetersPerSecond.of(0.0);
     public LinearAcceleration rollerMotorLinearAcceleration = MetersPerSecondPerSecond.of(0.0);
     public AngularVelocity rollerMotorAngularVelocity = RotationsPerSecond.of(0.0);
     public AngularAcceleration rollerMotorAngularAcceleration = RotationsPerSecondPerSecond.of(0.0);
+    public Rotation2d rollerMotorPosition =  Rotation2d.kZero;
+
 
     public Current pivotMotorCurrent = Amps.of(0.0);
     public Current rollerMotorCurrent = Amps.of(0.0);
@@ -60,4 +62,9 @@ public interface IntakeIO {
   public default void disableRollerMotor(boolean shouldDisable) {}
 
   public default void disablePivotMotor(boolean shouldDisable) {}
+
+  public default void setPivotMotorPosition(Rotation2d position) {}
+
+  public default void setRollerMotorPosition(Rotation2d position) {}
+
 }
