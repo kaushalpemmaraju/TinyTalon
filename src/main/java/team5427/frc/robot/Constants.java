@@ -5,10 +5,12 @@
 package team5427.frc.robot;
 
 import static edu.wpi.first.units.Units.Hertz;
+import static edu.wpi.first.units.Units.Meters;
 
 import com.ctre.phoenix6.CANBus;
 import com.pathplanner.lib.config.RobotConfig;
 import edu.wpi.first.math.util.Units;
+import edu.wpi.first.units.measure.Distance;
 import edu.wpi.first.units.measure.Frequency;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
@@ -21,6 +23,11 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+  public static class RobotConstants{
+    public static Distance limelightHeight = Meters.of(0.1);
+    public static Distance shooterHeight = Meters.of(0.5);
+    
+  }
   public static final String kCanivoreBusName = "canivore_bus_name";
   public static final double kOdometryFrequency =
       new CANBus(Constants.kCanivoreBusName).isNetworkFD() ? 250.0 : 100.0;

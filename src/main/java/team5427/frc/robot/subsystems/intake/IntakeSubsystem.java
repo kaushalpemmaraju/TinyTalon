@@ -15,6 +15,7 @@ import org.littletonrobotics.junction.Logger;
 import team5427.frc.robot.Constants;
 import team5427.frc.robot.Constants.Mode;
 import team5427.frc.robot.subsystems.intake.io.IntakeIO;
+import team5427.frc.robot.subsystems.intake.io.IntakeIOHybrid;
 import team5427.frc.robot.subsystems.intake.io.IntakeIOInputsAutoLogged;
 import team5427.frc.robot.subsystems.intake.io.IntakeIOMagicTalonFX;
 import team5427.frc.robot.subsystems.intake.io.IntakeIOSim;
@@ -52,7 +53,7 @@ public class IntakeSubsystem extends SubsystemBase {
     inputsAutoLogged = new IntakeIOInputsAutoLogged();
     switch (Constants.currentMode) {
       case REAL:
-        io = new IntakeIOMagicTalonFX();
+        io = new IntakeIOHybrid();
         break;
       case SIM:
         if (swerveDriveSimulationSupplier.isEmpty()) {
