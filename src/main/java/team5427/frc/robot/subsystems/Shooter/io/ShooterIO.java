@@ -32,22 +32,13 @@ public interface ShooterIO {
 
 
 
-        public AngularAcceleration kPivotMotorAcceleration = RotationsPerSecondPerSecond.of(0.0);
-        public LinearAcceleration kShooterMotorAcceleration = MetersPerSecondPerSecond.of(2.0);
-        public AngularAcceleration kShooterMotorAngularAcceleration = RotationsPerSecondPerSecond.of(2.0);
-
-        public Voltage kPivotMotorVoltage = Volts.of(0.0);
-        public Voltage kShooterMotorVoltage = Volts.of(0.0);
 
 
-        public Current kPivotMotorCurrent = Amps.of(0.0);
-        public Current kShooterMotorCurrent = Amps.of(0.0);
+
 
         public boolean pivotMotorConnected = false;
         public boolean shooterMotorConnected = false;
 
-        public Temperature pivotMotorTemperature = Celsius.of(0.0);
-        public Temperature shooterMotorTemperature = Celsius.of(0.0);
 
 
 
