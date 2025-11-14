@@ -1,10 +1,14 @@
-package team5427.frc.robot.subsystems.Shooter;
+package team5427.frc.robot.subsystems.shooter;
 
+import static edu.wpi.first.units.Units.MetersPerSecond;
 import static edu.wpi.first.units.Units.MetersPerSecondPerSecond;
 
 import org.apache.commons.math3.ml.distance.CanberraDistance;
 
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.units.measure.Distance;
+import edu.wpi.first.units.measure.LinearAcceleration;
+import edu.wpi.first.units.measure.LinearVelocity;
 import team5427.lib.drivers.CANDeviceId;
 import team5427.lib.drivers.ComplexGearRatio;
 import team5427.lib.motors.MotorConfiguration;
@@ -25,7 +29,8 @@ public class ShooterConstants {
     public static MotorConfiguration kPivotMotorConfiguration = new MotorConfiguration();
     public static Rotation2d kRotationMotorStartingPosition = Rotation2d.kZero;
     public static Rotation2d kPivotStartingPosition = Rotation2d.kZero;
-
+    public static LinearVelocity kShooterInitialVelocity = MetersPerSecond.of(8.0); //TO-DO
+    public static LinearAcceleration kGravity = MetersPerSecondPerSecond.of(9.8);
 
 
     static{

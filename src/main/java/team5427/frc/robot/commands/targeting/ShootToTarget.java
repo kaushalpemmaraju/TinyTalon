@@ -1,25 +1,29 @@
 package team5427.frc.robot.commands.targeting;
 
 import static edu.wpi.first.units.Units.Meters;
+import static edu.wpi.first.units.Units.MetersPerSecond;
+import static edu.wpi.first.units.Units.MetersPerSecondPerSecond;
 
-import org.apache.commons.math3.geometry.euclidean.threed.Rotation;
+import org.opencv.core.Mat;
 
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.kinematics.Kinematics;
 import edu.wpi.first.units.measure.Distance;
+import edu.wpi.first.units.measure.LinearAcceleration;
+import edu.wpi.first.units.measure.LinearVelocity;
 import edu.wpi.first.wpilibj2.command.Command;
-import team5427.frc.robot.subsystems.Swerve.SwerveSubsystem;
 import team5427.frc.robot.subsystems.intake.ShooterSubsystem;
+import team5427.frc.robot.subsystems.shooter.ShooterConstants;
 import team5427.frc.robot.subsystems.vision.VisionSubsystem;
-import team5427.frc.robot.FieldConstants;
-import team5427.frc.robot.Constants.RobotConstants;
 
-public class SetShooterTarget extends Command{
+public class ShootToTarget extends Command{
     private ShooterSubsystem shooter;
     private VisionSubsystem vision;
     private Rotation2d shootingAngle;
-    private Rotation2d finalShootingAngle;
+    private Distance neededDistanceToReachTarget;
+    
 
-    public SetShooterTarget(Rotation2d shootingAngle){
+    public ShootToTarget(Rotation2d shootingAngle){
         shooter = ShooterSubsystem.getInstance();
         vision = VisionSubsystem.getInstance();
         this.shootingAngle = shootingAngle;
@@ -28,14 +32,16 @@ public class SetShooterTarget extends Command{
 
     @Override
     public void initialize() {
-        Rotation2d limelightAngle = vision.getTargetX(0);
-        Distance robotXDistanceFromTarget = FieldConstants.bargeHeight.minus(RobotConstants.limelightHeight).div(Math.tan(shootingAngle.getRadians()));
-        finalShootingAngle = Rotation2d.fromRadians(Math.atan((FieldConstants.bargeHeight.minus(RobotConstants.shooterHeight)).in(Meters)/ (robotXDistanceFromTarget).in(Meters)));
+        LinearVelocity initialVerticalVelocity = ShooterConstants.kShooterInitialVelocity.times(Math.sin(shootingAngle.getRadians()));
+        double v2 = Math.pow(initialVerticalVelocity.magnitude(), 2.0);
+        Distance maxHeight = Meters.of(v2).div(ShooterConstants.kGravity.times(2.0).magnitude());
+        neededDistanceToReachTarget = MetersPerSecond.of(v2).div(ShooterConstants.kGravity.times(2.0).magnitude());
     }
 
     @Override
     public void execute() {
-        shooter.setAngle(finalShootingAngle);
+        // TODO Auto-generated method stub
+        super.execute();
     }
 
     @Override
@@ -48,9 +54,5 @@ public class SetShooterTarget extends Command{
     public void end(boolean interrupted) {
         // TODO Auto-generated method stub
         super.end(interrupted);
-    }
-
-    public Rotation2d shooterAngle(){
-        return finalShootingAngle;
     }
 }
