@@ -1,4 +1,4 @@
-package team5427.frc.robot.subsystems.Shooter;
+package team5427.frc.robot.subsystems.shooter;
 
 import static edu.wpi.first.units.Units.MetersPerSecond;
 
@@ -8,9 +8,9 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.units.measure.LinearVelocity;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import team5427.frc.robot.Constants;
-import team5427.frc.robot.subsystems.Shooter.io.ShooterIO;
-import team5427.frc.robot.subsystems.Shooter.io.ShooterIOTalonFX;
-import team5427.frc.robot.subsystems.Shooter.io.ShooterIO.ShooterIOInputs;
+import team5427.frc.robot.subsystems.shooter.io.ShooterIO;
+import team5427.frc.robot.subsystems.shooter.io.ShooterIOTalonFX;
+import team5427.frc.robot.subsystems.shooter.io.ShooterIO.ShooterIOInputs;
 import team5427.lib.drivers.ComplexGearRatio;
 import team5427.lib.motors.SteelTalonFX;
 
