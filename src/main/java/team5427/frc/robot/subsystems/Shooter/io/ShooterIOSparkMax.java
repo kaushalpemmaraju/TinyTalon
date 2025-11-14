@@ -75,5 +75,8 @@ public class ShooterIOSparkMax implements ShooterIO{
     public void setShooterMotorPosition(Rotation2d position) {
         shooterMotor.setEncoderPosition(position);
     }
+    public void isIntakedProjectile(){
+        
+    }
 
 }
