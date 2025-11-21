@@ -8,6 +8,8 @@ import org.opencv.core.Mat;
 
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.Kinematics;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.units.measure.Distance;
 import edu.wpi.first.units.measure.LinearAcceleration;
 import edu.wpi.first.units.measure.LinearVelocity;
@@ -36,6 +38,7 @@ public class ShootToTarget extends Command{
         double v2 = Math.pow(initialVerticalVelocity.magnitude(), 2.0);
         Distance maxHeight = Meters.of(v2).div(ShooterConstants.kGravity.times(2.0).magnitude());
         neededDistanceToReachTarget = MetersPerSecond.of(v2).div(ShooterConstants.kGravity.times(2.0).magnitude());
+        Interpol
     }
 
     @Override
