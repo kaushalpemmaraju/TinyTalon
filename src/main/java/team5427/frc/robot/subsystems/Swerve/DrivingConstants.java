@@ -4,6 +4,7 @@ import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.math.trajectory.TrapezoidProfile.Constraints;
 import edu.wpi.first.math.util.Units;
 import team5427.lib.drivers.LoggedTunableNumber;
+import team5427.lib.tunableControls.TunableControls.TunableProfiledController;
 
 public final class DrivingConstants {
   public static LoggedTunableNumber kRotationKp = new LoggedTunableNumber("Rotation P", 1.0);
@@ -18,7 +19,9 @@ public final class DrivingConstants {
       new LoggedTunableNumber("Rotation Angle Tol.", Units.degreesToRadians(2));
   public static LoggedTunableNumber kRotationVelocityTolerance =
       new LoggedTunableNumber("Rotation Velocity Tol.", Units.degreesToRadians(2));
-
+  
+  public static TunableProfiledController kUpdatedRotationController = 
+  new TunableProfiledController(new TunableControlConstants(null, null))
   public static ProfiledPIDController kRotationController =
       new ProfiledPIDController(
           kRotationKp.get(),
