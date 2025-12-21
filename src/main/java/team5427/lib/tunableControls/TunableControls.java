@@ -6,6 +6,7 @@ import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.trajectory.TrapezoidProfile.State;
+import team5427.lib.motors.MotorConfiguration;
 
 /**
  * Contains classes for defining control constants and tunable controllers.
@@ -44,6 +45,20 @@ public class TunableControls {
         double maxInput;
         double minInput;
 
+        public MotorConfiguration toMotorConfiguration(){
+            MotorConfiguration config = new MotorConfiguration();
+            config.kP = kP;
+            config.kI = kI;
+            config.kD = kD;
+            config.kV = kV;
+            config.kA = kA;
+            config.kS = kS;
+            config.kG = kG;
+            config.maxVelocity = maxVel;
+            config.maxAcceleration = maxAcc;
+            return config;
+        }
+
         public ControlConstants(ControlConstants constants) {
             this.kP = constants.kP;
             this.kI = constants.kI;
@@ -65,7 +80,28 @@ public class TunableControls {
             this.minInput = constants.minInput;
         }
 
-        /**
+        public ControlConstants() {
+            this.kP = 0;
+            this.kI = 0;
+            this.kD = 0;
+            this.tolerance = 0;
+            this.velTolerance = 0;
+            this.iZone = 0;
+            this.iMax = 0;
+            this.iMin = 0;
+            this.period = 0;
+            this.kV = 0;
+            this.kA = 0;
+            this.kS = 0;
+            this.kG = 0;
+            this.maxVel = 0;
+            this.maxAcc = 0;
+            this.isContinuous = false;
+            this.maxInput = 0;
+            this.minInput = 0;
+		}
+
+		/**
          * Sets the PID constants.
          * 
          * @param kP proportional gain (units of output per unit error)
