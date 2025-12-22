@@ -474,6 +474,12 @@ public class TunableControls {
             pidController.setTolerance(params.tolerance.get(), params.velTolerance.get());
         }
 
+        public void setPID(double p, double i, double d) {
+            pidController.setP(p);
+            pidController.setI(i);
+            pidController.setD(d);
+          }
+
         /**
          * Returns the accumulated error used in the integral calculation of this
          * controller.
@@ -635,6 +641,22 @@ public class TunableControls {
             profiledPIDController.setIZone(params.iZone.get());
             profiledPIDController.setIntegratorRange(params.iMin.get(), params.iMax.get());
             profiledPIDController.setTolerance(params.tolerance.get(), params.velTolerance.get());
+        }
+
+        public void setP(double p) {
+            profiledPIDController.setP(p);
+        }
+
+        public void setI(double i) {
+            profiledPIDController.setI(i);
+        }
+
+        public void setD(double d) {
+            profiledPIDController.setD(d);
+        }
+
+        public void setConstraints(TrapezoidProfile.Constraints constraints){
+            profiledPIDController.setConstraints(constraints);
         }
 
         /**
